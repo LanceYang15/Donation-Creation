@@ -305,6 +305,7 @@
     <Compile Include="Models\DonationBoxCategory.cs" />
     <Compile Include="Models\DonationBoxCreationFormViewModel.cs" />
     <Compile Include="Models\GuestUser.cs" />
+    <Compile Include="Models\Hidden.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\MailGun.cs" />
