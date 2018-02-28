@@ -17,3 +17,6 @@ Website project dedicated to those who are in need of items. Everyone has had so
   * Microsoft Visual Studio
   * Entity Framework
   * Microsoft SQL Server
+  * HTML 5
+  * CSS
+  * Bootstrap 3
