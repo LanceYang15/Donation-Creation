@@ -52,23 +52,6 @@ namespace DonationCreation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ItemId,ItemName,ItemQuantity,ItemDescription,DonationBoxId")] Item item, DonationBox donationbox)
         {
-
-            //get the donation box id
-            // I don't think the DonationBoxId is being specified
-            //var donationBoxId = donationbox.DonationBoxId;
-            //item.DonationBoxId = donationBoxId;
-
-            //new code
-            //first obtain the user's id
-            //var userId = User.Identity.GetUserId();
-            //get the profile id that corresponds to the user id thats logged in
-            // however the user is able to have many donation boxes, thus many ids but with only one user id
-            //var userProfile = db.DonationBoxes.Where(d => d.ApplicationUserId == userId);
-
-            //The solution to this table is by setting Item Table PK to both PK and FK with the Donation
-            // Box Table being the PK and FK
-
-
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
@@ -113,6 +96,7 @@ namespace DonationCreation.Controllers
             return View(item);
         }
 
+
         // GET: Item/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -128,6 +112,7 @@ namespace DonationCreation.Controllers
             return View(item);
         }
 
+
         // POST: Item/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -138,6 +123,7 @@ namespace DonationCreation.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
