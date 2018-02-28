@@ -1,0 +1,91 @@
+﻿@model DonationCreation.Models.DonationBox
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "DonationBox", FormMethod.Post, new { @class = "Form-Horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DonationBox</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.DonationBoxCategoryId, "DonationBoxCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-2">
+                <p class="control-label">Category</p>
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownList("DonationBoxCategoryId", null, "Select A Category", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DonationBoxCategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonationBoxTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonationBoxTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter a Title" } })
+                @Html.ValidationMessageFor(model => model.DonationBoxTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.DonationBoxImage, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-2">
+                <p class="control-label">Image</p>
+            </div>
+            <div class="col-md-10">
+                @*1@Html.EditorFor(model => model.DonationBoxImage, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*2<input type="file" name="UserStoryPhoto" id="fileUpload" accept=".png, .jpg, .jpeg, .gif, .tif"/>*@
+                @*1@Html.ValidationMessageFor(model => model.DonationBoxImage, "", new { @class = "text-danger" })*@
+                <input type="file" id="file" name="file" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.DonationBoxStoryDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-2">
+                <p class="control-label">Story</p>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonationBoxStoryDescription, new { htmlAttributes = new { @class = "form-control", placeholder = "Tell Your Story" } })
+                @Html.ValidationMessageFor(model => model.DonationBoxStoryDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.DonationBoxItemDescription, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-2">
+                <p class="control-label">Item Description</p>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonationBoxItemDescription, new { htmlAttributes = new { @class = "form-control", placeholder = "What are some items that are needed" } })
+                @*@Html.ValidationMessageFor(model => DonationBoxItemDescription, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-primary btn-lg" type="button" value="Create Item List" onclick="location.href='@Url.Action("Create", "Item")'" />
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                @*<input type="submit" value="Create" class="btn btn-default"  onclick="location.href='@Url.Action("Create", "ItemController")'"/>*@
+                @*<input class="btn btn-primary btn-lg" type="button" value="Create" onclick="location.href='@Url.Action("Create", "DonationBox")'" />*@
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("To List", "Index")
+</div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<DonationCreation.Models.DonationBox>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .my-outline2 {
+        border-radius: 25px;
+        border: 2px solid #000000;
+        padding: 20px;
+        width: 100%;
+        height: 300px;
+        margin-bottom: 10px;
+        margin-top: 10px
+    }
+
+    .my-scroll {
+        background-color: #FFF;
+        /*width: 100%;*/
+        height: 170px;
+        overflow: auto;
+    }
+
+    .my-sidebar-box {
+        max-height: 120px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .my-sidebar-box .readmore {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        /*"transparent" only works here because == rgba(0,0,0,0)*/
+        background-image: linear-gradient(to bottom, transparent, white);
+    }
+
+    .my-margin{
+        margin-top: 20px;
+    }
+
+</style>
+
+<h2>Donation Box</h2>
+
+@*<p>
+    @Html.ActionLink("Create Donation Box", "Create")
+</p>*@
+@using (Html.BeginForm())
+{
+    <div>
+        <div>
+            @Html.DropDownList("DonationBoxCategoryId", null, "Select A Category", htmlAttributes: new { @class = "form-control" })
+            
+        </div>       
+        <div>
+            <input type="submit" value="Search" />
+        </div>
+    </div>
+}
+
+
+@foreach (var item in Model)
+{
+
+    <div class="my-outline2">
+
+        <div>
+            <div>
+                <h4><strong>@Html.DisplayNameFor(model => model.DonationBoxTitle) :</strong> @Html.DisplayFor(modelItem => item.DonationBoxTitle)</h4>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <h4><strong>@Html.DisplayNameFor(model => model.DonationBoxCategory.DonationBoxCateogryName) :</strong> @Html.DisplayFor(modelItem => item.DonationBoxCategory.DonationBoxCateogryName)</h4>
+            </div>
+        </div>
+
+        @*<div>
+            <div>
+                <h4><strong>@Html.DisplayNameFor(model => model.ApplicationUser.PoBox) :</strong> @Html.DisplayFor(modelItem => item.ApplicationUser.PoBox)</h4>
+            </div>
+        </div>*@
+
+        <div>
+            <div class="col-sm-4 my-margin">
+                @if (item.DonationBoxImage == null)
+                {
+                    //display nothing
+                }
+                else
+                {
+                    <img class="img-thumbnail" height="200" width="200" src="~/Content/Images/@item.DonationBoxImage" />
+                }
+            </div>
+            <div class="col-sm-8 my-sidebar-box">
+                @Html.DisplayFor(modelItem => item.DonationBoxStoryDescription)
+                @*<p class="readmore btn btn-default" onclick="location.href='@Url.Action("Details", "DonationBox")'"><strong>Read More</strong></p>*@
+                @*<p class="readmore"><a href="#" class="btn btn-default"><strong>Read More</strong></a></p>*@
+                <p class="readmore">
+                    <a>
+                        @Html.ActionLink("Read More", "Details", new { id = item.DonationBoxId}, new { @class="btn btn-default"})
+                    </a>
+                </p>
+                @*<input class="readmore btn btn-primary btn-lg" type="button" value="Read More" onclick="location.href='@Url.Action("Details", "DonationBox")'" />*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.DonationBoxId, @class="readmore btn btn-default"})*@
+            </div>
+
+
+            @*<div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DonationBoxId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DonationBoxId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DonationBoxId })
+            </div>*@
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+}

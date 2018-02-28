@@ -1,0 +1,129 @@
+﻿@model DonationCreation.Models.DonationBox
+@*@model IEnumerable<DonationCreation.Models.DonationBox>*@
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .my-outline2 {
+        border-radius: 25px;
+        border: 2px solid #000000;
+        padding: 20px;
+        width: 100%;
+        height: 1200px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .my-scroll {
+        background-color: #FFF;
+        /*width: 100%;*/
+        height: 200px;
+        overflow: auto;
+    }
+
+    .my-sidebar-box {
+        max-height: 120px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .my-sidebar-box .readmore {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            /*"transparent" only works here because == rgba(0,0,0,0)*/
+            background-image: linear-gradient(to bottom, transparent, white);
+        }
+
+    .my-container2 {
+        min-height: 100%;
+        border-right: 5px solid #000;
+        border-left: 5px solid #000;
+        position: relative; /* relative postion so we can absolutely position footer within it */
+    }
+
+    .my-thumbnail {
+        margin-top: 25px;
+        margin-bottom: 50px;
+    }
+
+    .my-margin-bottom {
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<h2>Details</h2>
+
+
+<div class="my-outline2">
+
+    <div>
+        <div class="col-sm-8">
+            <h4><strong>Created By :</strong> @Html.DisplayFor(model => model.ApplicationUser.FirstName)</h4>
+            <h4><strong>Email :</strong>@Html.DisplayFor(model => model.ApplicationUser.Email)</h4>
+            <h4><strong>Created On :</strong> @Html.DisplayFor(model => model.DonationBoxCreatedDate)</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4><strong>@Html.DisplayNameFor(model => model.ApplicationUser.PoBox) :</strong> @Html.DisplayFor(model => model.ApplicationUser.PoBox)</h4>
+            <h4><strong>@Html.DisplayNameFor(model => model.ApplicationUser.City) :</strong> @Html.DisplayFor(model => model.ApplicationUser.City)</h4>
+            <h4><strong>@Html.DisplayNameFor(model => model.ApplicationUser.State) :</strong> @Html.DisplayFor(model => model.ApplicationUser.State)</h4>
+            <h4><strong>@Html.DisplayNameFor(model => model.ApplicationUser.Zipcode) :</strong> @Html.DisplayFor(model => model.ApplicationUser.Zipcode)</h4>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-sm-12">
+            <h4><strong>@Html.DisplayNameFor(model => model.DonationBoxTitle) :</strong> @Html.DisplayFor(model => model.DonationBoxTitle)</h4>
+            <h4><strong>@Html.DisplayNameFor(model => model.DonationBoxCategory.DonationBoxCateogryName) :</strong> @Html.DisplayFor(model => model.DonationBoxCategory.DonationBoxCateogryName)</h4>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-sm-12 center my-thumbnail">
+            <img class="img-thumbnail" height="600" width="600" src="~/Content/Images/@Html.DisplayFor(model => model.DonationBoxImage)" />
+        </div>
+    </div>
+
+    <div>
+        <div class="col-sm-12 my-scroll my-margin-bottom">
+            <h4><strong>My Story</strong></h4>
+            @Html.DisplayFor(model => model.DonationBoxStoryDescription)
+        </div>
+    </div>
+
+    <div>
+        <div class="col-sm-12 my-scroll">
+            <h4><strong>My Item Description</strong></h4>
+            @Html.DisplayFor(model => model.DonationBoxItemDescription)
+        </div>
+    </div>
+    @using (Html.BeginForm("Details", "DonationBox", FormMethod.Post, new { @class = "Form-Horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            <div class="col-sm-3">
+                <input class="form-control" type="text"  name="trackingNumber" />
+            </div>
+            <div class="col-md-9">
+                <input type="submit" value="Send Email" class="btn btn-default" />               
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.DonationBoxId }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

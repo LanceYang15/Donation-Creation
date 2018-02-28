@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DonationCreation.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>What are some item(s) you may need?</h2>
+
+<p>
+    @Html.ActionLink("Add Item", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DonationBox.DonationBoxTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonationBox.DonationBoxTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
+        </td>
+    </tr>
+}
+
+</table>

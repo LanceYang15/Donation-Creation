@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@*<div class="split left">
+        <div class="centered">
+            <h2>LEFT</h2>
+            <p>Create a Donation Box</p>
+            <input class="btn btn-primary btn-lg" type="button" value="Create" onclick="location.href='@Url.Action("Create", "DonationBox")'" />
+        </div>
+    </div>*@
+
+@*<div class="split right">
+    <div class="centered">
+        <h2>RIGHT</h2>
+        <p>Search For a Donation Box</p>
+        @if (Context.User.Identity.IsAuthenticated)
+        {
+            <input class="btn btn-primary btn-lg" type="button" value="Search" onclick="location.href='@Url.Action("Index", "DonationBox")'" />
+        }
+        else
+        {
+            <input class="btn btn-primary btn-lg" type="button" value="Search" onclick="location.href='@Url.Action("WarningDisplay", "DonationBox")'" />
+        }
+        
+    </div>
+</div>*@
+
+
+<div>
+    <div class="centered">
+        <h2>Search For a Donation Box</h2>
+        @if (Context.User.Identity.IsAuthenticated)
+        {
+            <input class="btn btn-primary btn-lg" type="button" value="Search" onclick="location.href='@Url.Action("Index", "DonationBox")'" />
+        }
+        else
+        {
+            <input class="btn btn-primary btn-lg" type="button" value="Search" onclick="location.href='@Url.Action("WarningDisplay", "DonationBox")'" />
+        }
+
+    </div>
+</div>
+

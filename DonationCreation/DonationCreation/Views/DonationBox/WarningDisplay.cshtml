@@ -1,0 +1,110 @@
+﻿@model DonationCreation.Models.GuestUser
+
+@{
+    ViewBag.Title = "WarningDisplay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="text-align: center">
+
+    <div style="width: 50%; margin-left: auto; margin-right: auto;">
+
+        <h2>Guest User Form</h2>
+
+        @using (Html.BeginForm("WarningDisplay", "DonationBox", FormMethod.Post, new { @class = "Form-Horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                <div class="form-group">
+                    <p>*In order to use the search function you must fill out a guest form.</p>
+                    <p>*If you decide that you are going to send any packages/items to any potential requests we suggest using a P.O. box instead of a home address in order to keep your information private.</p>
+                </div>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestUserEmail, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GuestUserEmail, new { htmlAttributes = new { @class = "form-control" } })                       
+                    </div>
+                    @Html.ValidationMessageFor(model => model.GuestUserEmail, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestUserFirstName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GuestUserFirstName, new { htmlAttributes = new { @class = "form-control" } })                       
+                    </div>
+                    @Html.ValidationMessageFor(model => model.GuestUserFirstName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestUserLastName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GuestUserLastName, new { htmlAttributes = new { @class = "form-control" } })                      
+                    </div>
+                    @Html.ValidationMessageFor(model => model.GuestUserLastName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestUserCity, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GuestUserCity, new { htmlAttributes = new { @class = "form-control" } })                       
+                    </div>
+                    @Html.ValidationMessageFor(model => model.GuestUserCity, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })                       
+                    </div>
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GuestUserZipCode, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.GuestUserZipCode, new { htmlAttributes = new { @class = "form-control" } })                        
+                    </div>
+                    @Html.ValidationMessageFor(model => model.GuestUserZipCode, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <p>*By pressing the apply button, you agree to our terms and service.</p>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="apply" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+        @*<div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
