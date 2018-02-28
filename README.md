@@ -20,3 +20,4 @@ Website project dedicated to those who are in need of items. Everyone has had so
   * HTML 5
   * CSS
   * Bootstrap 3
+  * Mailgun API
