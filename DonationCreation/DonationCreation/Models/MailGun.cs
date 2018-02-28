@@ -13,11 +13,13 @@ namespace DonationCreation.Models
 
         public static IRestResponse SendSimpleMessage(string recieverEmail, string text)
         {
+            Hidden hide = new Hidden();
+            string API_KEY = hide.RetrieveApiKey();
             RestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
             new HttpBasicAuthenticator("api",
-                                      "API_KEY");
+                                      API_KEY);
 
             RestRequest request = new RestRequest();
             request.AddParameter("domain", "sandbox7899273d1a254a2d989b5bd1acee3ff9.mailgun.org", ParameterType.UrlSegment);

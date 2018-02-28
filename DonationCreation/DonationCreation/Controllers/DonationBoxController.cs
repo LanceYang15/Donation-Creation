@@ -16,6 +16,7 @@ namespace DonationCreation.Controllers
     public class DonationBoxController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        Hidden hide = new Hidden();
 
         // GET: DonationBox
         public async Task<ActionResult> Index()
@@ -111,7 +112,7 @@ namespace DonationCreation.Controllers
             if (ModelState.IsValid)
             {
 
-                string guestEmail = "EMAIL_ADDRESS";
+                string guestEmail = hide.RetrieveEmail();
                 //string text = "This is your tracking number : USPS-3849384-348948";
                 string text2 = trackingNumber;
 
